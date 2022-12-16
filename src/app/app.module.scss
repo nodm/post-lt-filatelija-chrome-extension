@@ -1,1 +1,18 @@
-/* Your styles goes here. */
+.app {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-bottom: 3px solid #eee;
+  padding: .5rem;
+}
+
+main {
+  padding: 1rem;
+  text-align: left;
+}
