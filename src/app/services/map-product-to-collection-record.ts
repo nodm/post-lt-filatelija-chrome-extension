@@ -1,6 +1,12 @@
 import { PhilatelyProduct } from '../models/philately-product';
 import { PhilatelyProductType } from '../models/philately-product-type';
-import { CollectionRecord, CollectionUnit, UnitType } from '../models/philately';
+import {
+  CatalogueName,
+  CollectionRecord,
+  CollectionUnit,
+  RecordType,
+  UnitType,
+} from '../models/philately';
 
 const YEAR_OF_EURO_AREA_JOINT = 2015;
 
@@ -18,8 +24,9 @@ export function mapProductToCollectionRecord(product: PhilatelyProduct): Collect
 
   const unit: CollectionUnit = {
     type: UnitType.STAMP,
-    catalogNumber: [{
-      name: 'Lietuvos paštas',
+    issueCatalogueNumber: product.catalogNumber ?? '',
+    catalogueNumbers: [{
+      name: CatalogueName.POST_LT,
       number: product.catalogNumber ?? '',
     }],
     denomination: {
@@ -48,9 +55,10 @@ export function mapProductToCollectionRecord(product: PhilatelyProduct): Collect
   const collectionRecord: CollectionRecord = {
     origin: product.href,
     countryCode: 'LT',
-    type: UnitType.STAMP,
+    type: RecordType.STAMP_SET,
     dateOfIssue: product.dateOfIssue ?? '',
-    catalogNumber: unit.catalogNumber,
+    issueCatalogueNumber: unit.issueCatalogueNumber,
+    catalogueNumbers: unit.catalogueNumbers,
     title: product.title,
     denomination: unit.denomination,
   };
@@ -75,11 +83,11 @@ export function mapProductToCollectionRecord(product: PhilatelyProduct): Collect
 
     const firstNumber = parseInt(firstNumberString, 10);
     const lastNumber = parseInt(lastNumberString, 10);
-    const units: CollectionUnit[] = new Array(lastNumber - firstNumber +1)
+    const units: CollectionUnit[] = new Array(lastNumber - firstNumber + 1)
       .fill(unit)
       .map((u, i) => ({
         ...u,
-        catalogNumber: [{
+        catalogueNumbers: [{
           name: 'Lietuvos paštas',
           number: (firstNumber +i).toString(),
         }],
