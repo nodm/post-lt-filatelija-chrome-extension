@@ -40,7 +40,6 @@ function App() {
           src={'/images/lp-filatelija.png'}
           alt="Lietuvos paštas filatelija"
         />
-        <h1 className="text-3xl font-bold underline">Lietuvos paštas</h1>
       </header>
       {errorMessage && <p>{JSON.stringify(errorMessage, null, 2)}</p>}
       {collectionRecord && (
