@@ -33,7 +33,7 @@ export const enum RecordType {
 
 export interface CollectionUnit {
   type: UnitType;
-  issueCatalogueNumber: string;
+  issuerCatalogueNumber: string;
   catalogueNumbers: CatalogueNumber[];
   denomination?: Denomination;
   postageRate?: string;
@@ -72,7 +72,7 @@ export interface CollectionRecord {
   countryCode: string;
   type: RecordType;
   dateOfIssue: string;
-  issueCatalogueNumber: string;
+  issuerCatalogueNumber: string;
   catalogueNumbers: CatalogueNumber[];
   title: string;
   denomination?: Denomination;
