@@ -24,7 +24,7 @@ export function mapProductToCollectionRecord(product: PhilatelyProduct): Collect
 
   const unit: CollectionUnit = {
     type: UnitType.STAMP,
-    issueCatalogueNumber: product.catalogNumber ?? '',
+    issuerCatalogueNumber: product.catalogNumber ?? '',
     catalogueNumbers: [{
       name: CatalogueName.POST_LT,
       number: product.catalogNumber ?? '',
@@ -57,7 +57,7 @@ export function mapProductToCollectionRecord(product: PhilatelyProduct): Collect
     countryCode: 'LT',
     type: RecordType.STAMP_SET,
     dateOfIssue: product.dateOfIssue ?? '',
-    issueCatalogueNumber: unit.issueCatalogueNumber,
+    issuerCatalogueNumber: unit.issuerCatalogueNumber,
     catalogueNumbers: unit.catalogueNumbers,
     title: product.title,
     denomination: unit.denomination,
